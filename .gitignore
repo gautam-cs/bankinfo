@@ -6,3 +6,6 @@ migrations/*
 __ pycache __
 db.sqlite3
 .DS_Store
+*.log
+*.pot
+__pycache__/

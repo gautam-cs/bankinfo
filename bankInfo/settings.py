@@ -33,7 +33,14 @@ SECRET_KEY = '54lp^04%ex*n9rx%@)^c!(e$#4a+)#yr*uhl1hf%%s8_@pb_=('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'arctic-whistler-88863.herokuapp.com']
+
+REST_FRAMEWORK = {
+    'UNAUTHENTICATED_USER': None,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'banks.authentication.JwtServiceOnlyAuthentication',
+    ),
+}
 
 # Application definition
 
@@ -45,7 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'banks'
+    'banks',
+    'whitenoise.runserver_nostatic',
 ]
 
 REST_FRAMEWORK = {
@@ -61,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -98,17 +107,32 @@ WSGI_APPLICATION = 'bankInfo.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'localdb',
+#         'CONN_MAX_AGE': 500,
+#         'OPTIONS': {
+#             'options': '-c search_path=banks'
+#         },
+#         'USER': 'gautam',
+#         'PASSWORD': 'password@12',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'localdb',
+        'NAME': 'de4ead61b7g5ij',
         'CONN_MAX_AGE': 500,
         'OPTIONS': {
             'options': '-c search_path=banks'
         },
-        'USER': 'gautam',
-        'PASSWORD': 'password@12',
-        'HOST': 'localhost',
+        'USER': 'postgres',
+        'PASSWORD': 'lfglchcfukvoqm',
+        'HOST': '203ad6238414554f8c88f299ccc7a44250809289aebed244a14a2a2e85f0d707@ec2-107-20-173-2.compute-1.amazonaws.com:5432',
         'PORT': '5432',
     }
 }
@@ -148,3 +172,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# django-heroku setting
+import django_heroku
+
+django_heroku.settings(locals())
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

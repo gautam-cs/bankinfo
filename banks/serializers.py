@@ -1,13 +1,12 @@
-from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 
-from banks.models import Branches
+from banks.models import Branches, Banks
 
 
-class BankSerializer(serializers.HyperlinkedModelSerializer):
+class BankSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ('bank_name', 'bank_id')
+        model = Banks
+        fields = '__all__'
 
 
 class BranchSerializer(serializers.ModelSerializer):
