@@ -107,35 +107,29 @@ WSGI_APPLICATION = 'bankInfo.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'localdb',
-#         'CONN_MAX_AGE': 500,
-#         'OPTIONS': {
-#             'options': '-c search_path=banks'
-#         },
-#         'USER': 'gautam',
-#         'PASSWORD': 'password@12',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'de4ead61b7g5ij',
+        'NAME': 'localdb',
         'CONN_MAX_AGE': 500,
-        'OPTIONS': {
-            'options': '-c search_path=banks'
-        },
-        'USER': 'postgres',
-        'PASSWORD': 'lfglchcfukvoqm',
-        'HOST': '203ad6238414554f8c88f299ccc7a44250809289aebed244a14a2a2e85f0d707@ec2-107-20-173-2.compute-1.amazonaws.com:5432',
+        'USER': 'gautam',
+        'PASSWORD': 'password@12',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'de4ead61b7g5ij',
+#         'CONN_MAX_AGE': 500,
+#         'USER': 'postgres',
+#         'PASSWORD': 'lfglchcfukvoqm',
+#         'HOST': '203ad6238414554f8c88f299ccc7a44250809289aebed244a14a2a2e85f0d707@ec2-107-20-173-2.compute-1.amazonaws.com:5432',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

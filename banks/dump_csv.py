@@ -27,11 +27,11 @@ class DumpData:
                     elif row[1] not in [bank[0] for bank in bank_list]:
                         bank_list.append([row[1], row[7]])
         if bank_list:
-            table = 'banks.banks_banks'
+            table = 'banks_banks'
             query = """INSERT INTO {} (bank_id, bank_name) VALUES (%s, %s) ON CONFLICT DO NOTHING""".format(table)
             self.insert_into_db(query, table, bank_list)
         if branch_list:
-            table = 'banks.banks_branches'
+            table = 'banks_branches'
             query = """INSERT INTO {} (ifsc, bank_id_id, branch, address, city, district, state) VALUES 
                        (%s, %s, %s, %s, %s, %s, %s) ON CONFLICT DO NOTHING;""".format(table)
             self.insert_into_db(query, table, branch_list)
